@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdoNetCore.Helpers;
 using AdoNetCore.Models;
 using Microsoft.Data.SqlClient;
 
@@ -31,7 +32,10 @@ namespace AdoNetCore.Repositories
         private SqlDataReader reader;
     public RepositoryParametrosOut ()
     {
-        string connectionString = "Data Source=LOCALHOST\\SQLEXPRESS;Initial Catalog=HOSPITAL;Persist Security Info=True;User ID=sa;Encrypt=True;Trust Server Certificate=True";
+        //string connectionString = "Data Source=LOCALHOST\\SQLEXPRESS;Initial Catalog=HOSPITAL;Persist Security Info=True;User ID=sa;Encrypt=True;Trust Server Certificate=True";
+        
+        //tras configurar el helper de la cadena de conexion
+        string connectionString = HelperConfiguration.GetConnectionString();
         this.cn = new SqlConnection(connectionString);
         this.com = new SqlCommand();
         this.com.Connection = this.cn;
